@@ -1,0 +1,40 @@
+<! DOCTYPE html >
+< html  lang = " es " >
+  < cabeza >
+    < meta  charset = " UTF-8 " >
+    < meta  name = " viewport " content = " width = device-width, initial-scale = 1.0 " >
+    < título > Saludo </ título >
+    < link  href = " css / estilos.css " rel = " hoja de estilo " >
+    < script  type = " module " src = " cmp / mi-footer.js " > </ script >
+  </ cabeza >
+  < cuerpo >
+    < form  id = " formSaludo " >
+      < h1 > Saludo </ h1 >
+      < p >
+        < etiqueta >
+          Nombre
+          < input  type = " text " name = " nombre " >
+        </ etiqueta >
+      </ p >
+      < p > < botón > Calcular </ botón > </ p >
+      < p > < nombre de salida  = " salida " > </ salida > </ p >
+    </ formulario >
+    < mi-pie de página > </ mi-pie de página >
+    < script  type = " módulo " >
+      importar  {  CtrlSaludo  }  desde  "/js/CtrlSaludo.js" ;
+      const  ctrlSaludo  =  new  CtrlSaludo ( ) ;
+      formSaludo . addEventListener ( "enviar" ,  evt  =>  {
+        prueba  {
+          evt . preventDefault ( ) ;
+          const  datos  =  new  FormData ( formSaludo ) ;
+          const  nombre  =  datos . get ( "nombre" ) ;
+          const  saludo  =  ctrlSaludo . calculaSaludo ( nombre ) ;
+          formSaludo . salida . valor  =  saludo ;
+        }  captura  ( error )  {
+          consola . log ( error ) ;
+          formSaludo . salida . valor  =  error . mensaje ;
+        }
+      } ) ;
+    </ script >
+  </ cuerpo >
+</ html >
